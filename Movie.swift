@@ -8,6 +8,7 @@
 
 import UIKit
 
+//Tag object, containing a name and popularity (which affects movie sort order)
 struct Tag {
     var name: String
     var popularity: Int
@@ -16,14 +17,15 @@ struct Tag {
 class Movie {
     var name: String
     var description: String
-    var tags = [Tag]()
+    var posterLink: String!
+    var tags = [Tag]() //Not currently relevant
     
     init(movieName: String, movieDesc: String) {
         name = movieName
         description = movieDesc
     }
     
-    //Returns number of keywords contained in a string, to help sort movies
+    //Returns number of keywords contained in movie's description, to help sort matches
     func keywordsInDesc(keyList: [String]) -> Int {
         var count = 0
         

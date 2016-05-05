@@ -8,7 +8,7 @@
 
 import UIKit
 
-//Extension of UIImage to allow rotations
+//Extension of UIImage to allow for view rotations
 extension UIImage {
     public func imageRotatedByDegrees(degrees: CGFloat, flip: Bool) -> UIImage {
         let radiansToDegrees: (CGFloat) -> CGFloat = {

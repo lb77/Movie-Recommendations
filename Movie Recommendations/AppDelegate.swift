@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Fabric
+import Crashlytics
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,14 +19,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
-        window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        
+        //Create a DB for our view controller to use
         let db = Database()
-        let keySearchViewController = KeySearchViewController(database: db)
         
-        window?.rootViewController = keySearchViewController
-        window?.makeKeyAndVisible()
+        let keySearchController = window?.rootViewController as! KeySearchViewController
+        keySearchController.movieDB = db
         
+        Fabric.with([Crashlytics.self])
         return true
     }
 

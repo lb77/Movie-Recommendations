@@ -32,79 +32,52 @@
                                 <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <searchBar contentMode="redraw" misplaced="YES" searchBarStyle="minimal" placeholder="Enter tags, separated by commas" translatesAutoresizingMaskIntoConstraints="NO" id="uNI-dp-5PD">
-                                <rect key="frame" x="0.0" y="20" width="562" height="44"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Dbo-e3-lV2">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Enter tags, separated by commas" translatesAutoresizingMaskIntoConstraints="NO" id="nlm-NF-CrE">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <animations/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <outlet property="delegate" destination="9pv-A4-QxB" id="034-GT-TPM"/>
+                                    <outlet property="delegate" destination="9pv-A4-QxB" id="vbW-Hd-4wZ"/>
                                 </connections>
                             </searchBar>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aXo-kk-aVG">
-                                <rect key="frame" x="562" y="27" width="30" height="30"/>
-                                <animations/>
-                                <state key="normal" image="plus_button_small"/>
-                            </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Dbo-e3-lV2">
-                                <rect key="frame" x="0.0" y="65" width="600" height="535"/>
-                                <animations/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="SGm-cz-SIj">
-                                        <rect key="frame" x="0.0" y="28" width="600" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SGm-cz-SIj" id="vlw-3i-Zs0">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <animations/>
-                                        </tableViewCellContentView>
-                                        <animations/>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="igT-HD-mMI" firstAttribute="centerX" secondItem="aZi-kH-3tF" secondAttribute="centerX" id="4Fv-xW-BY5"/>
-                            <constraint firstItem="aXo-kk-aVG" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="7" id="8cq-ZH-oYC"/>
-                            <constraint firstItem="uNI-dp-5PD" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="-20" id="8g8-Kk-0X6"/>
+                            <constraint firstItem="nlm-NF-CrE" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" id="5S6-c7-LdZ"/>
                             <constraint firstItem="aZi-kH-3tF" firstAttribute="top" secondItem="igT-HD-mMI" secondAttribute="bottom" constant="29" id="E9z-sB-iIQ"/>
-                            <constraint firstItem="aXo-kk-aVG" firstAttribute="leading" secondItem="uNI-dp-5PD" secondAttribute="trailing" id="KV3-vS-kNX"/>
                             <constraint firstItem="igT-HD-mMI" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="Sdd-SJ-1EV"/>
+                            <constraint firstItem="nlm-NF-CrE" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="-20" id="Wcy-Ba-trD"/>
+                            <constraint firstItem="igT-HD-mMI" firstAttribute="top" secondItem="nlm-NF-CrE" secondAttribute="bottom" constant="94" id="YNh-gD-IBI"/>
                             <constraint firstItem="aZi-kH-3tF" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="Yem-xB-7r5"/>
-                            <constraint firstItem="uNI-dp-5PD" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" id="agu-MJ-N6M"/>
-                            <constraint firstItem="igT-HD-mMI" firstAttribute="top" secondItem="uNI-dp-5PD" secondAttribute="bottom" constant="94" id="fA5-6B-YVl"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="aXo-kk-aVG" secondAttribute="trailing" constant="-12" id="gLr-x2-Lrv"/>
-                            <constraint firstItem="uNI-dp-5PD" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" id="vH1-1V-JNY"/>
+                            <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="Dbo-e3-lV2" secondAttribute="bottom" id="Z3B-1k-ffa"/>
+                            <constraint firstItem="Dbo-e3-lV2" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="44" id="jQK-Dy-a8O"/>
+                            <constraint firstItem="Dbo-e3-lV2" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="kme-3T-w3c"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Dbo-e3-lV2" secondAttribute="trailing" constant="-20" id="l8s-ni-oGR"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="nlm-NF-CrE" secondAttribute="trailing" constant="-20" id="ltF-lJ-E6J"/>
+                            <constraint firstItem="Dbo-e3-lV2" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="-20" id="oPe-J1-d5e"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf"/>
                     <connections>
-                        <outlet property="addBtn" destination="aXo-kk-aVG" id="Xgb-ps-d4v"/>
                         <outlet property="browseTags" destination="aZi-kH-3tF" id="wrL-w4-kHe"/>
                         <outlet property="enterTags" destination="igT-HD-mMI" id="g5A-zw-Jly"/>
-                        <outlet property="searchBar" destination="uNI-dp-5PD" id="1Ty-g7-rHq"/>
-                        <outlet property="searchDisplayController" destination="VmG-54-qeH" id="pvN-ek-fZd"/>
+                        <outlet property="searchBar" destination="nlm-NF-CrE" id="dS4-Al-AEq"/>
                         <outlet property="tableView" destination="Dbo-e3-lV2" id="4gj-VL-uDf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="VmG-54-qeH">
-                    <connections>
-                        <outlet property="delegate" destination="9pv-A4-QxB" id="fa6-fB-OD0"/>
-                        <outlet property="searchBar" destination="uNI-dp-5PD" id="wub-4S-wvs"/>
-                        <outlet property="searchContentsController" destination="9pv-A4-QxB" id="fff-jY-ITK"/>
-                        <outlet property="searchResultsDataSource" destination="9pv-A4-QxB" id="r1s-fB-4gF"/>
-                        <outlet property="searchResultsDelegate" destination="9pv-A4-QxB" id="PhT-di-tld"/>
-                    </connections>
-                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="782" y="-330"/>
         </scene>
     </scenes>
     <resources>
         <image name="first" width="30" height="30"/>
-        <image name="plus_button_small" width="64" height="64"/>
     </resources>
 </document>

@@ -7,10 +7,11 @@
 //
 
 import UIKit
+//import WebKit
 
-//Search By Keyword
+//Interface to search movies by keyword
 class KeySearchViewController: UIViewController, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate {
-    var movieDB: Database
+    var movieDB: Database!
     var matchedMovies = [Movie]()
     
     @IBOutlet weak var enterTags: UILabel!
@@ -20,68 +21,63 @@ class KeySearchViewController: UIViewController, UISearchBarDelegate, UITableVie
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
-    init?(_ coder: NSCoder? = nil, database: Database) {
-        movieDB = database
-        
-        if let coder = coder {
-            super.init(coder: coder)
-        } else {
-            super.init(nibName: nil, bundle: nil)
-        }
-    }
-    
-    required convenience init?(coder aDecoder: NSCoder) {
-        //fatalError("init(coder:) has not been implemented")
-        self.init(aDecoder, database: Database())
-    }
-    
-    var searchActive = false
-    
-    //Begin search delegation functions
-    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
-        searchActive = false
-    }
-    
-    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
-        searchActive = false
-    }
-    
-    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
-        searchActive = false
-    }
-    
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        searchActive = false
-    }
-    
+    //Search Delegation
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        if let keyList: [String] = searchText.componentsSeparatedByString(",") {
-            matchedMovies = movieDB.getMoviesWithKeywords(keyList)
+        if searchText != "" {
+            if let keyList: [String] = searchText.componentsSeparatedByString(",") {
+                //Hide labels and bring up a table view if user types something
+                tableView.hidden = false
+                enterTags.hidden = true
+                browseTags.hidden = true
+                
+                matchedMovies = movieDB.getMoviesWithKeywords(keyList)
+                tableView.reloadData()
+            }
+        } else {
+            tableView.hidden = true
+            enterTags.hidden = false
+            browseTags.hidden = false
         }
     }
     
-    //Begin table delegation functions
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
-    
+    //Table Delegation
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return movieDB.moviesList.count
+        return matchedMovies.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell")! as UITableViewCell
-        cell.textLabel?.text = movieDB.moviesList[indexPath.row].name
+        let cell = UITableViewCell(style: .Default, reuseIdentifier: "UITableViewCell")
+        cell.textLabel?.text = matchedMovies[indexPath.row].name
         return cell
     }
+    
+    /*
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.hidden = true
+        
+        let webView = UIWebView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height))
+        
+        let movieTitle = "https://www.imdb.com/find?s=all&q="+matchedMovies[indexPath.row].name
+        let movieURL = NSURL(string: movieTitle)
+        let movieReq = NSURLRequest(URL: movieURL!)
+        
+        webView.loadRequest(movieReq)
+        
+        view.addSubview(webView)
+        print("Success")
+    }
+    */
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view, typically from a nib.
-        tableView?.delegate = self
-        tableView?.dataSource = self
-        searchBar?.delegate = self
+        tableView.delegate = self
+        tableView.dataSource = self
+        searchBar.delegate = self
+        
+        tableView.hidden = true
+        enterTags.hidden = false
+        browseTags.hidden = false
     }
     
     override func didReceiveMemoryWarning() {
